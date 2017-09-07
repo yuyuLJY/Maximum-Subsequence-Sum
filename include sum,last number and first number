@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define M 100000
+/*
+Given a sequence of K integers
+The Maximum Subsequence is the continuous subsequence which has the largest sum of its elements.
+For example, given sequence { -2, 11, -4, 13, -5, -2 }, its maximum subsequence is { 11, -4, 13 } with the largest sum being 20.
+Now you are supposed to find the largest sum, together with the first and the last numbers of the maximum subsequence.
+需要把序列最大的和求出来，并且再输出该序列的起始的数字
+思路：先构建一个能计算max的for循环。因为如果当前的thissum<0的话，那么前面这一段thissum只会称为拖累后边的数值，
+所以用条件判断，如果thissum<0,那么直接令thissum=0,重新从下一个位置开始计算。
+*/
+int main()
+{
+    int k,i,thissum=0,max=0;
+    int stop=0;
+    int a[M];
+    scanf("%d",&k);
+    for(i=0;i<k;i++){
+        scanf("%d",&a[i]);
+    }
+    for(i=0;i<k;i++){
+        thissum+=a[i];
+        if(thissum>max)
+        {
+            max=thissum;
+            stop=i;//把最大位置的那个位置记录下来，只有更换max的时候，才会对stop有影响
+        }
+
+        if(thissum<0)
+            thissum=0;/*如果thissum<0,那么直接令thissum=0,重新从下一个位置开始计算。*/
+
+    }
+    printf(" %d ",max);
+   int sum=0;
+   for(i=stop;;i--){
+        sum+=a[i];
+        if(sum==max){
+          printf("%d ",a[i]);
+          break;
+        }
+   }
+    printf("%d",a[stop]);
+    return 0;
+}
