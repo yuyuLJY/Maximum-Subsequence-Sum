@@ -1,0 +1,46 @@
+//复杂度是n^3
+int MaxSubseqSum1(int n,int a[]){
+    int i,j,k;
+    int hissum,max=0;
+    for(i=0;i<n;i++){//i是子列的左端
+        for(j=i;j<n;j++){//i是子列的右端
+            int thissum=0;
+            for(k=i;k<=j;k++){
+                thissum=a[k]+thissum;
+            }
+            if(thissum>max)
+                max=thissum;
+        }
+    }
+    return max；
+}
+
+//复杂度n^2
+int MaxSubseqSum2(int n,int a[]){
+    int i,j;
+    int thissum,max=0;
+    for(i=0;i<n;i++){//i是子列的左端
+        int thissum=0;
+        for(j=i;j<n;j++){//i是子列的右端
+            thissum+=a[k];
+            if(thissum>max)
+                max=thissum;
+        }
+    }
+    return max；
+}
+
+//简单的算法
+int MaxSubseqSum3(int n,int a[]){
+    int i,j;
+    int thissum,max=0;
+    for(i=0;i<n;i++){//i是子列的左端
+        int thissum=0;
+        for(j=i;j<n;j++){//i是子列的右端
+            thissum+=a[k];
+            if(thissum>max)
+                max=thissum;
+        }
+    }
+    return max；
+} 
